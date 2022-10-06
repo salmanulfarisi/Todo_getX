@@ -41,8 +41,9 @@ class AddDialog extends StatelessWidget {
                                 homeController.editController.text);
                             if (success) {
                               EasyLoading.showSuccess('Todo item add success');
-                              Get.back();
+
                               homeController.changeTask(null);
+                              Get.back();
                             } else {
                               EasyLoading.showError('Todo item already exist');
                             }

@@ -83,7 +83,7 @@ class AddCard extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         minimumSize: const Size(140, 40)),
-                    onPressed: () {
+                    onPressed: () async {
                       if (homeController.formkey.currentState!.validate()) {
                         int icon = icons[homeController.chipIndex.value]
                             .icon!

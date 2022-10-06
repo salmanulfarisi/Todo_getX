@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:todo_flutter/app/core/utils/keys.dart';
 import 'package:todo_flutter/app/data/models/task.dart';
@@ -16,8 +14,9 @@ class TaskProvider {
 
   List<Task> readTasks() {
     var tasks = <Task>[];
-    jsonDecode(_storage.read(taskKey).toString())
-        .forEach((e) => tasks.add(Task.fromJson(e)));
+    // jsonDecode(_storage.read(taskKey).toString())
+    //     .forEach((e) => tasks.add(Task.fromJson(e)));
+    _storage.read(taskKey).forEach((e) => tasks.add(Task.fromJson(e)));
     return tasks;
   }
 
