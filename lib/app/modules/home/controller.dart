@@ -114,9 +114,11 @@ class HomeController extends GetxController {
     int index = doingTodos.indexWhere(
         (element) => mapEquals<String, dynamic>(doingTodo, element));
     doingTodos.removeAt(index);
-    var doneTodo = {'tile': title, 'done': true};
+    var doneTodo = {'title': title, 'done': true};
     doneTodos.add(doneTodo);
     doingTodos.refresh();
     doneTodos.refresh();
   }
+
+  deleteDoneTodo(element) {}
 }
