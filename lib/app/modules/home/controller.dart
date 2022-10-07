@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:todo_flutter/app/data/models/task.dart';
 import 'package:todo_flutter/app/data/services/storage/repositery.dart';
 
@@ -8,6 +9,7 @@ class HomeController extends GetxController {
   TastRepositery tastRepositery;
   HomeController({required this.tastRepositery});
   final formkey = GlobalKey<FormState>();
+  final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final editController = TextEditingController();
   final chipIndex = 0.obs;
   final deleting = false.obs;
@@ -144,5 +146,15 @@ class HomeController extends GetxController {
       }
     }
     return res;
+  }
+
+  // sidemenu
+  void openClosedSideMenu() {
+    final state = sideMenuKey.currentState!;
+    if (state.isOpened) {
+      state.closeSideMenu();
+    } else {
+      state.openSideMenu();
+    }
   }
 }

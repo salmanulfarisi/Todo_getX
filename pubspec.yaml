@@ -36,6 +36,7 @@ dependencies:
   flutter_svg: ^1.1.5
   get: ^4.6.5
   get_storage: ^2.0.3
+  shrink_sidemenu: ^2.0.0+2-null-safety
   step_progress_indicator: ^1.0.2
 
 dev_dependencies:
