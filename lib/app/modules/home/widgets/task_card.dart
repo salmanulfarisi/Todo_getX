@@ -37,8 +37,11 @@ class TaskCard extends StatelessWidget {
           children: [
             StepProgressIndicator(
               // TODO change after finish todo CRUD
-              totalSteps: 100,
-              currentStep: 80,
+              totalSteps:
+                  homeController.idTodosEmpty(task) ? 1 : task.todos!.length,
+              currentStep: homeController.idTodosEmpty(task)
+                  ? 0
+                  : homeController.getDoneTodo(task),
               size: 5,
               padding: 0,
               selectedGradientColor: LinearGradient(

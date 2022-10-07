@@ -27,13 +27,16 @@ class DoneList extends StatelessWidget {
                         key: ObjectKey(element),
                         direction: DismissDirection.endToStart,
                         onDismissed: (_) =>
-                            homeController.deleteDoneTodo(element['title']),
+                            homeController.deleteDoneTodo(element),
                         background: Container(
                           color: Colors.red.withOpacity(0.8),
                           alignment: Alignment.centerRight,
-                          child: const Icon(
-                            Icons.delete,
-                            color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 5.0.wp),
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         child: Padding(
