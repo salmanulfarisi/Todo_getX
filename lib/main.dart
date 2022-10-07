@@ -8,7 +8,7 @@ import 'package:todo_flutter/app/modules/home/home_view.dart';
 
 void main() async {
   await GetStorage.init();
-  await Get.putAsync(() => StorageServices().init());
+  await Get.putAsync(() => StorageService().init());
   runApp(const MyApp());
 }
 

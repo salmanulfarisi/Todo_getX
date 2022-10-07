@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -96,6 +98,7 @@ class AddCard extends StatelessWidget {
                             icon: icon,
                             color: color);
                         Get.back();
+                        log(task.toString());
                         homeController.addTask(task)
                             ? EasyLoading.showSuccess('Create success')
                             : EasyLoading.showError('Duplicated Task');

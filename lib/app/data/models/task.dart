@@ -31,7 +31,7 @@ class Task extends Equatable {
       color: json['color'],
       todos: json['todos']);
 
-  Map<String, dynamic> toJason() => {
+  Map<String, dynamic> toJson() => {
         'title': title,
         'icon': icon,
         'color': color,
