@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:todo_flutter/app/core/utils/extentions.dart';
 import 'package:todo_flutter/app/data/models/task.dart';
+import 'package:todo_flutter/app/modules/events/view.dart';
 import 'package:todo_flutter/app/modules/home/controller.dart';
 import 'package:todo_flutter/app/modules/home/widgets/add_card.dart';
 import 'package:todo_flutter/app/modules/home/widgets/add_dialoge.dart';
 import 'package:todo_flutter/app/modules/home/widgets/buildmenu_drawer.dart';
 import 'package:todo_flutter/app/modules/home/widgets/task_card.dart';
-import 'package:todo_flutter/app/modules/report/view.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -82,10 +82,11 @@ class HomePage extends GetView<HomeController> {
                   ],
                 ),
               ),
-              const ReportPage()
+              const EventsPage()
             ],
           ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: DragTarget<Task>(
           builder: (_, __, ___) {
             return Obx(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_flutter/app/core/utils/extentions.dart';
 import 'package:todo_flutter/app/modules/home/controller.dart';
+import 'package:todo_flutter/app/modules/report/view.dart';
 
 Widget buildMenu() {
   final homeController = Get.find<HomeController>();
@@ -28,7 +29,10 @@ Widget buildMenu() {
           dense: true,
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Get.to(() => ReportPage(), transition: Transition.cupertinoDialog);
+            // homeController.openClosedSideMenu();
+          },
           leading: const Icon(
             Icons.data_usage,
             color: Colors.white,
