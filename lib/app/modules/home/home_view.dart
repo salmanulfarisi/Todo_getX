@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:todo_flutter/app/core/utils/extentions.dart';
 import 'package:todo_flutter/app/data/models/task.dart';
+import 'package:todo_flutter/app/data/services/theme/theme_services.dart';
 import 'package:todo_flutter/app/modules/events/view.dart';
 import 'package:todo_flutter/app/modules/home/controller.dart';
 import 'package:todo_flutter/app/modules/home/widgets/add_card.dart';
@@ -32,6 +33,21 @@ class HomePage extends GetView<HomeController> {
                 Icons.menu,
                 color: Colors.grey,
               )),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  ThemeService().switchTheme();
+                  controller.notifyHelper.scheduledNotification(
+                      title: 'Theme Changed',
+                      body: Get.isDarkMode
+                          ? 'Activated Light Theme'
+                          : 'Activated Dark Theme');
+                },
+                icon: const Icon(
+                  Icons.dark_mode,
+                  color: Colors.amber,
+                ))
+          ],
         ),
         body: Obx(
           () => IndexedStack(
@@ -78,7 +94,7 @@ class HomePage extends GetView<HomeController> {
                           AddCard(),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -124,7 +140,7 @@ class HomePage extends GetView<HomeController> {
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(right: 15.0.wp),
-                    child: const Icon(Icons.apps),
+                    child: const Icon(Icons.fact_check_outlined),
                   ),
                   label: 'Home',
                 ),

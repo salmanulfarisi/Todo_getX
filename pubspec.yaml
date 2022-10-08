@@ -33,10 +33,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_easyloading: ^3.0.5
+  flutter_heatmap_calendar: ^1.0.5
+  flutter_local_notifications: ^9.6.1
+  flutter_native_timezone: ^2.0.0
   flutter_svg: ^1.1.5
   get: ^4.6.5
   get_storage: ^2.0.3
   intl: ^0.17.0
+  motion_tab_bar: null
   shrink_sidemenu: ^2.0.0+2-null-safety
   step_progress_indicator: ^1.0.2
 

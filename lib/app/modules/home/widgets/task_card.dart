@@ -36,7 +36,6 @@ class TaskCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             StepProgressIndicator(
-              // TODO change after finish todo CRUD
               totalSteps:
                   homeController.idTodosEmpty(task) ? 1 : task.todos!.length,
               currentStep: homeController.idTodosEmpty(task)

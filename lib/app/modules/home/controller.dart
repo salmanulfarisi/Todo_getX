@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+import 'package:todo_flutter/app/core/utils/date_time.dart';
 import 'package:todo_flutter/app/data/models/task.dart';
+import 'package:todo_flutter/app/data/services/notifications/notifications.dart';
 import 'package:todo_flutter/app/data/services/storage/repositery.dart';
 
 class HomeController extends GetxController {
@@ -18,12 +20,18 @@ class HomeController extends GetxController {
   final tabIndex = 0.obs;
   final doingTodos = <dynamic>[].obs;
   final doneTodos = <dynamic>[].obs;
+  var notifyHelper = NotifyHelper();
+
+  List todayTaskList = [];
+  Map<DateTime, int> heatMapDataset = {};
 
   @override
   void onInit() {
     super.onInit();
     tasks.assignAll(tastRepositery.readTask());
     ever(tasks, (_) => tastRepositery.writeTasks(tasks));
+    notifyHelper.initializeNotification();
+    notifyHelper;
   }
 
   @override
@@ -170,6 +178,27 @@ class HomeController extends GetxController {
       }
     }
     return res;
+  }
+
+  void loadMap() {
+    var createdTasks = getTotalTask();
+    var compleatedTasks = getTotoalDoneTasks();
+    var precent = (compleatedTasks / createdTasks * 100).toString();
+    DateTime startDate = createDateTimeObject(DateTime.now().toString());
+    int daysInBetween = DateTime.now().difference(startDate).inDays;
+    for (var i = 0; i < daysInBetween + 1; i++) {
+      String yyyymmdd =
+          convertDateTimeToString(startDate.add(Duration(days: i)));
+      double strength = double.parse(precent);
+      int year = startDate.add(Duration(days: i)).year;
+      int month = startDate.add(Duration(days: i)).month;
+      int day = startDate.add(Duration(days: i)).day;
+      final percentForEachDay = <DateTime, int>{
+        DateTime(year, month, day): (10 * strength).toInt()
+      };
+      heatMapDataset.addEntries(percentForEachDay.entries);
+      print(heatMapDataset);
+    }
   }
 
   // sidemenu

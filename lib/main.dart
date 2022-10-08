@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:todo_flutter/app/core/utils/themes.dart';
 import 'package:todo_flutter/app/data/services/storage/services.dart';
+import 'package:todo_flutter/app/data/services/theme/theme_services.dart';
 import 'package:todo_flutter/app/modules/home/binding.dart';
 import 'package:todo_flutter/app/modules/home/home_view.dart';
 
@@ -21,6 +23,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      theme: Themes.lightMode,
+      darkTheme: Themes.darkMode,
+      themeMode: ThemeService().theme,
       home: const HomePage(),
       initialBinding: HomeBinding(),
       builder: EasyLoading.init(),
